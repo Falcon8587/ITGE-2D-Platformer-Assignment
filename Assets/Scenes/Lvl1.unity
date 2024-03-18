@@ -4142,6 +4142,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5609455494494507871, guid: 1837cc776dd2bdf40bf28b687a02dbc1, type: 3}
   m_PrefabInstance: {fileID: 1328694445}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1284956363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284956351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: 0}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1304110383
 GameObject:
   m_ObjectHideFlags: 0
@@ -4461,7 +4491,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3942711784498550426, guid: 1837cc776dd2bdf40bf28b687a02dbc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1284956363}
   m_SourcePrefab: {fileID: 100100000, guid: 1837cc776dd2bdf40bf28b687a02dbc1, type: 3}
 --- !u!1 &1362424250
 GameObject:

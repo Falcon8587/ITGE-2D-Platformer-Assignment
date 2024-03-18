@@ -132,6 +132,7 @@
 //    }
 //}
 
+
 using System.Collections;
 using UnityEngine;
 
@@ -148,8 +149,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+
     private bool canDash = true;
     private bool isDashing;
+
     [SerializeField] private float dashingPower = 24f;
     [SerializeField] private float dashingTime = 0.2f;
     [SerializeField] private float dashingCooldown = 1f;
