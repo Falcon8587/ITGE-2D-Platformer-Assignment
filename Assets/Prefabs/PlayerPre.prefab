@@ -175,14 +175,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   jumpingPower: 35
+  boxsize: {x: 1.71, y: 0.42}
+  castDistance: 0.8
+  rb: {fileID: 1670340771347150853}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
   dashingPower: 30
   dashingTime: 0.2
   dashingCooldown: 1
-  rb: {fileID: 1670340771347150853}
-  groundCheck: {fileID: 4991085223574643637}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   dashpowerup: 0
   DoubleJumpPowerup: 0
 --- !u!96 &5219231749310871221

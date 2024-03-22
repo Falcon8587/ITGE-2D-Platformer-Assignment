@@ -143,10 +143,12 @@ public class PlayerMovement : MonoBehaviour
     public float jumpingPower = 16f;
     private bool isFacingRight = true;
 
+    public Vector2 boxsize;
+    public float castDistance;
+
     private bool doubleJump;
 
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
     private float coyoteTime = 0.2f;
@@ -170,12 +172,23 @@ public class PlayerMovement : MonoBehaviour
         {
             doubleJump = false;
         }
+        
+        //Coyote Time Check
+        if (IsGrounded())
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
 
+        //Jump and Double Jump Check
         if (DoubleJumpPowerup == true)
         {
             if (Input.GetButtonDown("Jump"))
             {
-                if (IsGrounded() || doubleJump)
+                if (coyoteTimeCounter > 0f || doubleJump)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
 
@@ -185,10 +198,15 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Jump") && IsGrounded())
+            if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0f)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             }
+        }
+
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        {
+            coyoteTimeCounter = 0f;
         }
 
 
@@ -218,7 +236,19 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        if (Physics2D.BoxCast(transform.position, boxsize, 0, -transform.up, castDistance, groundLayer))
+        {
+            return true;    
+        }
+        else 
+        { 
+            return false; 
+        }  
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position-transform.up * castDistance, boxsize);
     }
 
     private void Flip()
