@@ -190,7 +190,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (coyoteTimeCounter > 0f || doubleJump)
                 {
-                    rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
 
                     doubleJump = !doubleJump;
                 }
@@ -200,11 +200,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0f)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
             }
         }
 
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f)
         {
             coyoteTimeCounter = 0f;
         }
@@ -230,7 +230,7 @@ public class PlayerMovement : MonoBehaviour
                 return;
             }
 
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
         }
     }
 
@@ -269,7 +269,7 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        rb.linearVelocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = originalGravity;
         isDashing = false;
